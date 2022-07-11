@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card bg-info">
+    {% for post in post_list %}
+        <div class="card-body">
+            <h1 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}" class="text-decoration-none text-success">{{ post.title }}</a></h1>
+            <p class="card-text text-success">Published on: {{ post.published_at|date:"D M Y"}}</p>
+            <a href="{% url 'post_detail' pk=post.pk %}" class="text-decoration-none text-success">Comments: {{ post.approved_comments.count }}</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

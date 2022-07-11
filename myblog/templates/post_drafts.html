@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="card bg-info">
+    {% for post in post_list %}
+        <div class="card-body">
+            <p class="card-text">created: {{ post.created_at|date:'d-m-Y' }}</p>
+            <h1 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}" class="text-decoration-none">{{ post.title }}</a></h1>
+            <p class="card-text">{{ post.text|truncatechars:200 }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
